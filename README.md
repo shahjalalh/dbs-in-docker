@@ -59,7 +59,7 @@ Create a folder in **/home/user-name** folder:
 $ cd ~
 $ mkdir postgres-docker
 $ cd postgres-docker
-$ sudo docker run -d -p 5000:5432 -v ~/postgres-docker:/var/lib/postgresql/data -e POSTGRES_PASSWORD=admin1234 --name postgres postgres:latest
+$ sudo docker run -d --name=postgres -p 5000:5432 -e POSTGRES_PASSWORD=admin1234 -e PGDATA=/pgdata -v ~/postgres-docker:/pgdata postgres:latest
 $ sudo docker ps -a
 $ sudo docker exec -it postgres psql -U postgres
 
@@ -85,11 +85,13 @@ postgres=# \q
 
 ```
 
+Connecting local PgAdmin with docker-postgres:
 
-Automate 
+<img src="./images/2-dockar-postgres-with-local-pgadmin.png">
+
+After completing task simple close the container and data will be persistent- 
 ```
+$ sudo docker stop <container-id>
 $ sudo docker ps -a
-$ sudo docker rm -f postgres
+$ sudo docker rm -f <container-id>
 ```
-
-(postgres: not completed yet)
