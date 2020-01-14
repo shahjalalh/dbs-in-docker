@@ -65,6 +65,7 @@ $ sudo docker exec -it postgres psql -U postgres
 
 postgres=# CREATE DATABASE demo_db1;
 CREATE DATABASE
+postgres=# \c demo_db1; 
 postgres=# CREATE TABLE demo_t(something int);
 CREATE TABLE
 postgres=# INSERT INTO demo_t (something) VALUES (1);
